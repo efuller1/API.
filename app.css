@@ -1,0 +1,160 @@
+/* =========================
+   BODY
+========================= */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    transition: 0.3s ease;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+    text-align: center;
+    margin-top: 80px;
+}
+
+/* =========================
+   HEADINGS
+========================= */
+
+h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 20px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background: #38bdf8;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #0284c7;
+    transform: scale(1.05);
+}
+
+/* =========================
+   API CARD
+========================= */
+
+.card {
+    margin: 40px auto;
+    width: 320px;
+    padding: 20px;
+
+    background: #1e293b;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* =========================
+   CHATBOT
+========================= */
+
+.chat-box {
+
+    margin: 50px auto;
+
+    width: 350px;
+
+    padding: 25px;
+
+    background: #1e293b;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.chat-box input {
+
+    width: 90%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    margin-bottom: 15px;
+
+    font-size: 16px;
+}
+
+/* =========================
+   DARK / LIGHT MODE
+========================= */
+
+.light-mode {
+    background: white;
+    color: black;
+}
+
+.light-mode .card,
+.light-mode .chat-box {
+    background: #f1f1f1;
+    color: black;
+}
+
+.light-mode input {
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 600px) {
+
+    .card,
+    .chat-box {
+
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    button {
+        width: 90%;
+    }
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My API Portfolio</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- DARK MODE BUTTON -->
+    <button onclick="toggleMode()">
+        Toggle Dark Mode
+    </button>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+
+        <h1>My Flask API</h1>
+
+        <p>API Developer Portfolio</p>
+
+        <!-- LOAD API BUTTON -->
+        <button onclick="loadData()">
+            Load API Data
+        </button>
+
+        <!-- API RESPONSE CARD -->
+        <div class="card">
+
+            <h2>API Response</h2>
+
+            <p id="name"></p>
+
+            <p id="role"></p>
+
+            <p id="language"></p>
+
+        </div>
+
+    </div>
+
+    <!-- CHATBOT -->
+    <div class="chat-box">
+
+        <h2>AI Chatbot</h2>
+
+        <input type="text"
+               id="message"
+               placeholder="Ask something...">
+
+        <button onclick="sendMessage()">
+            Send
+        </button>
+
+        <p id="chat-response"></p>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // =========================
+        // DARK MODE
+        // =========================
+        function toggleMode() {
+
+            document.body.classList.toggle('light-mode');
+
+        }
+
+        // =========================
+        // LOAD API DATA
+        // =========================
+        async function loadData() {
+
+            try {
+
+                const response =
+                    await fetch('/api/data');
+
+                const data =
+                    await response.json();
+
+                document.getElementById('name')
+                    .innerText =
+                    "Name: " + data.name;
+
+                document.getElementById('role')
+                    .innerText =
+                    "Role: " + data.role;
+
+                document.getElementById('language')
+                    .innerText =
+                    "Language: " + data.language;
+
+            }
+
+            catch (error) {
+
+                console.log(
+                    "Error loading data:",
+                    error
+                );
+
+            }
+        }
+
+        // =========================
+        // AI CHATBOT
+        // =========================
+        async function sendMessage() {
+
+            const message =
+                document.getElementById('message').value;
+
+            // Prevent empty messages
+            if (message.trim() === "") {
+                return;
+            }
+
+            try {
+
+                const response =
+                    await fetch('/chat', {
+
+                    method: 'POST',
+
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+
+                    body: JSON.stringify({
+                        message: message
+                    })
+
+                });
+
+                const data =
+                    await response.json();
+
+                document.getElementById('chat-response')
+                    .innerText =
+                    "AI: " + data.ai;
+
+                // Clear input
+                document.getElementById('message').value = "";
+
+            }
+
+            catch (error) {
+
+                console.log(
+                    "Chatbot error:",
+                    error
+                );
+
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
